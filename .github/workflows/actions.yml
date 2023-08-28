@@ -4,7 +4,9 @@ jobs:
     run-github-actions:
       runs-on: ubuntu-latest
       steps:
-        - name: List Files
+        - name: Checkout 
+          uses: actions/checkout@v1
+        - name: List Files After Clone
           run: | 
             pwd 
             ls
