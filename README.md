@@ -25,3 +25,6 @@ __Melhoria 1__, _melhoria 2_
 3. Sistema de bônus primeira comora
 
 #### Criação da branch develop
+
+#### Imagem Logo
+![logo do Python](/img/python.jpg)
