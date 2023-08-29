@@ -8,3 +8,18 @@ _checkout, **Tela de produto**, catálogo, Home com banner_
 
 ###### Melhorias 
 __Melhoria 1__, _melhoria 2_
+
+### Linguagens do projeto
+
+* HTML
+* CSS
+* JavaScript
+* PHP
+* MYSQL
+
+### Funalidades a desenvolver
+
+1. Área de membros
+    1. Login diferente
+2. Integração com outros pagamentos
+3. Sistema de bônus primeira comora
