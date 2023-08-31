@@ -28,3 +28,11 @@ __Melhoria 1__, _melhoria 2_
 
 #### Imagem Logo
 ![logo do Python](/img/python.jpg)
+
+##código da função soma
+
+```javascript
+function soma(a,b){
+    return a + b
+}
+```
