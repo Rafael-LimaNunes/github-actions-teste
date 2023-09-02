@@ -11,33 +11,50 @@ on:
   pull_request:
     types: [closed, assigned, opened, reopened]
 jobs:
-    run-github-actions:
-      runs-on: ubuntu-latest
-      steps:
-        - name: payload
-          run: echo ${{github.event.client_payload.env}}
-        - name: Install Nodejs
-          uses: actions/setup-node@v3
-          with:
-            node-version: 18  
-       # - name: install dependencies
-       #   run: npm ci
-       # - name: Run Tests 
-       #   run: npm test 
-        - name: Checkout 
-          uses: actions/checkout@v1
-        - name: List Files After Clone
-          run: | 
-            pwd 
-            ls -a
-            echo $GITHUB_SHA
-            echo $GITHUB_REPOSITORY
-            echo $GITHUB_WORKSPACE
-            echo "${{ github.token }}"
-        - name: Simple JS Action
-          id: greet
-          uses: actions/hello-world-javascript-action@v1
-          with:
-            who-to-greet: Jonh
-        - name: Log Geeting time
-          run: echo "${{steps.greet.outputs.time}}"
+  create_issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create issue using REST API
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "Automated issue for commit: ${{ github.sha }}",
+            "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
+            }' \
+          --fail
+  
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: payload
+        run: echo ${{github.event.client_payload.env}}
+      - name: Install Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  
+      # - name: install dependencies
+      #   run: npm ci
+      # - name: Run Tests 
+      # run: npm test 
+      - name: Checkout 
+        uses: actions/checkout@v1
+      - name: List Files After Clone
+        run: | 
+          pwd 
+          ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+      - name: Simple JS Action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: Jonh
+      - name: Log Geeting time
+        run: echo "${{steps.greet.outputs.time}}"
