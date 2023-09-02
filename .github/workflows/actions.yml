@@ -25,11 +25,11 @@ jobs:
           git config --global user.email "my-bot@bot.com"
           git config --global user.name "my-bot"
           git fetch
-          git checkout master
+          git checkout main
           git branch --set-upstream-to=origin/main
           git pull
           ls -a 
-          echo $RANDOM >> random.TXT
+          echo $RANDOM >> random.txt
           ls -a
           git add -a
           git commit -a -m "Random file" 
