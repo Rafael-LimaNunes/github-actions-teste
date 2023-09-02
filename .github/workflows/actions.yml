@@ -1,7 +1,11 @@
 name: Actions Workflow
-on: 
-  repository_dispatch:
-    types: [build]
+on:
+  push:
+    branches:
+      - master
+      - 'feature/*' 
+  #repository_dispatch:
+  #  types: [build]
   # schedule:
   # - cron: "0/5 * * * *"
   pull_request:
@@ -12,6 +16,14 @@ jobs:
       steps:
         - name: payload
           run: echo ${{github.event.client_payload.env}}
+        - name: Install Nodejs
+          uses: actions/setup-node@v3
+          with:
+            node-version: 18  
+        - name: install dependencies
+          run: npm ci
+        - name: Run Tests 
+          run: npm test
         - name: Checkout 
           uses: actions/checkout@v1
         - name: List Files After Clone
