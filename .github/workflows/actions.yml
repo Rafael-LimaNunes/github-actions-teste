@@ -2,7 +2,7 @@ name: Actions Workflow
 on:
   push:
     branches:
-      - master
+      - main
       - 'feature/*' 
   #repository_dispatch:
   #  types: [build]
@@ -23,7 +23,7 @@ jobs:
         - name: install dependencies
           run: npm ci
         - name: Run Tests 
-          run: npm test
+          run: npm test g
         - name: Checkout 
           uses: actions/checkout@v1
         - name: List Files After Clone
