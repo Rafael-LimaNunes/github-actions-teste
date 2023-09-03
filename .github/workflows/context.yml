@@ -5,6 +5,12 @@ jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
+      - name: functions
+        run: |
+          echo ${{ contains('hello','ll')}}
+          echo ${{ startsWith('hello','he')}}
+          echo ${{ endsWith('hello','lo')}}
+          echo ${{ format('hello {0} {1} {2}','world', '!', '!')}}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}

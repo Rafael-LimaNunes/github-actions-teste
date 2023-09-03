@@ -2,11 +2,11 @@ name: Actions Workflow
 permissions:
   contents: write
 on:
-  push:
-    branches:
-      - main
-      - 'feature/*' 
-  #repository_dispatch:
+# push:
+#    branches:
+#      - main
+#      - 'feature/*' 
+  repository_dispatch:
   #  types: [build]
   # schedule:
   # - cron: "0/5 * * * *"
