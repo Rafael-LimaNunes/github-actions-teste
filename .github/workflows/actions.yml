@@ -31,6 +31,7 @@ jobs:
           ls -a 
           echo $RANDOM >> random.txt
           ls -a
+          git remote -v
           git add .
           git commit -a -m "Random file" 
           git push
@@ -47,6 +48,7 @@ jobs:
           --fail
   
   run-github-actions:
+    needs: [create_issue]
     runs-on: ubuntu-latest
     steps:
       - name: payload
