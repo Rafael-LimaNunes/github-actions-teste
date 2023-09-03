@@ -1,4 +1,6 @@
 name: Actions Workflow
+permissions:
+  contents: write
 on:
   push:
     branches:
