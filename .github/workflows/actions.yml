@@ -1,17 +1,17 @@
 name: Actions Workflow
 permissions:
   contents: write
-on:
+on:                                                                                                                     
 # push:
 #    branches:
 #      - main
 #      - 'feature/*' 
-  repository_dispatch:
-  #  types: [build]
+#repository_dispatch:
+  #  types: [build]s
   # schedule:
   # - cron: "0/5 * * * *"
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+ pull_request:
+  types: [closed, assigned, opened, reopened]
 jobs:
   create_issue:
     runs-on: ubuntu-latest
