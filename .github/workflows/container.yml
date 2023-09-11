@@ -16,4 +16,4 @@ jobs:
       - name: post a user
         run: "curl -X POST http://localhost:3001/api/user -H 'COtent-type: application/json' -d '{\"username\":\"hello\", \"adress\": \"dwded\"}'" 
       - name: get a user
-        run: curl http://localhost:3001/api/user
+        run: curl http://localhost:3001/api/users
